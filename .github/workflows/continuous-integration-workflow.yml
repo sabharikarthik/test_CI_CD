@@ -13,4 +13,4 @@ jobs:
         FIRST_NAME: Sabhari...
         MIDDLE_NAME: Welcome to Test
       run: |
-        echo $MY_VAR $FIRST_NAME $MIDDLE_NAME.
+        echo $MY_VAR $FIRST_NAME $MIDDLE_NAME
