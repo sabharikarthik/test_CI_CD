@@ -1,7 +1,5 @@
 name: Greeting from Sabhari
-
-on: [push]
-
+on: [push, pull_request]
 jobs:
   build:
     name: My Job
@@ -9,4 +7,4 @@ jobs:
     steps:
     - name: Print a greeting
       run: |
-        echo sabhari karthik.
+        echo "sabhari karthik".
