@@ -5,6 +5,8 @@ application up and running.
 
 This application is made for testing Continuous Integration and Continuous Development in GitHub.
 
+The testing is done after registering for github actions beta.
+
 Things you may want to cover:
 
 * Ruby version
