@@ -3,6 +3,8 @@
 This README would normally document whatever steps are necessary to get the
 application up and running.
 
+Seems running now.
+
 This application is made for testing Continuous Integration and Continuous Development in GitHub.
 
 The testing is done after registering for github actions beta.
