@@ -30,7 +30,11 @@ jobs:
         bundle exec rspec
         rubocop --out result.txt
         echo "sabhari karthik"
-      env: 
-        BUNDLE_GEMFILE: Gemfile
+      env:
+        RAILS_ENV: development
         POSTGRES_HOST: localhost
-        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }} 
+        POSTGRES_USER: sabhari
+        POSTGRES_PASSWORD: Sabari123
+        POSTGRES_DB: test_CI_CD_development
+        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
+        BUNDLE_GEMFILE: Gemfile
