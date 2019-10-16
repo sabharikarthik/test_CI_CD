@@ -13,3 +13,5 @@ jobs:
         bundle exec rspec
         rubocop --out result.txt
         echo "sabhari karthik"
+     env: 
+       BUNDLE_GEMFILE: Gemfile
