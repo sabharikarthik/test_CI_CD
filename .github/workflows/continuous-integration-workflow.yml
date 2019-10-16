@@ -8,7 +8,7 @@ jobs:
     - uses: actions/checkout@master
     - name: Print a greeting
       run: |
-        sudo apt-get install ruby-2.6.3
+        sudo ln -sf /opt/hostedtoolcache/Ruby/2.6.3/x64/bin/ruby /usr/bin/ruby
         sudo gem install bundler -v 1.17.2
         bundle install
         bundle exec rspec
