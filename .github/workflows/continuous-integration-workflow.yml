@@ -9,7 +9,7 @@ jobs:
       run: |
         sudo apt-get install ruby-full
         sudo gem install bundler -v 1.17.3
-        bundle install
+        bundle install --gemfile Gemfile
         bundle exec rspec
         rubocop --out result.txt
         echo "sabhari karthik"
