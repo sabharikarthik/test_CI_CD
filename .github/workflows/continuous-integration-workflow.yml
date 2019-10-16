@@ -7,7 +7,9 @@ jobs:
     steps:
     - name: Print a greeting
       run: |
-        bundle install
+        sudo apt-get install ruby-full
+        sudo gem install bundler -v 1.17.3
+        sudo bundle install
         bundle exec rspec
         rubocop --out result.txt
         echo "sabhari karthik"
