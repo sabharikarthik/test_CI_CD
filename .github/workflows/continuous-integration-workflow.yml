@@ -6,11 +6,11 @@ jobs:
     runs-on: ubuntu-latest
     services:
       postgres:
-        image: postgres:10.8
+        image: postgres:10.10
         env:
-          POSTGRES_USER: postgres
-          POSTGRES_PASSWORD: postgres
-          POSTGRES_DB: postgres
+          POSTGRES_USER: sabhari
+          POSTGRES_PASSWORD: Sabari123
+          POSTGRES_DB: test_CI_CD_development
         ports:
         # will assign a random free host port
         - 5432/tcp
@@ -21,9 +21,6 @@ jobs:
     - uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
-    - uses: harmon758/postgresql-action@v1
-      with:
-        postgresql version: '10.10'
     - name: Print a greeting
       run: |
         gem install bundler -v 1.17.2
