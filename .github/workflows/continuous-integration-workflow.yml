@@ -4,6 +4,18 @@ jobs:
   build:
     name: My Job
     runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:10.8
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: postgres
+        ports:
+        # will assign a random free host port
+        - 5432/tcp
+        # needed because the postgres container does not provide a healthcheck
+        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
     - uses: actions/checkout@master
     - uses: actions/setup-ruby@v1
@@ -19,5 +31,8 @@ jobs:
         bundle exec rspec
         rubocop --out result.txt
         echo "sabhari karthik"
+      working-directory: ./postgres
       env: 
         BUNDLE_GEMFILE: Gemfile
+        POSTGRES_HOST: localhost
+        POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }} 
