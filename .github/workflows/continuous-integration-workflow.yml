@@ -7,4 +7,7 @@ jobs:
     steps:
     - name: Print a greeting
       run: |
-        echo "sabhari karthik".
+        bundle install
+        bundle exec rspec
+        rubocop --out result.txt
+        echo "sabhari karthik"
