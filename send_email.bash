@@ -1,4 +1,4 @@
-SENDGRID_API_KEY="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"
+SENDGRID_API_KEY= ENV["SENDGRID_API_KEY"]
 EMAIL_TO="karthiksabharitgs@gmail.com"
 FROM_EMAIL="sabhari@rootquotient.com"
 FROM_NAME="Sabhari Karthik"
