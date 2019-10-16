@@ -26,6 +26,7 @@ jobs:
         sudo apt-get install libpq-dev
         gem install bundler -v 1.17.2
         bundle install
+        bundle exec rake
         bundle exec rspec
         rubocop --out result.txt
         echo "sabhari karthik"
