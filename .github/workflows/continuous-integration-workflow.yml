@@ -9,6 +9,9 @@ jobs:
     - uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
+    - uses: harmon758/postgresql-action@v1
+      with:
+        postgresql version: '10.10'
     - name: Print a greeting
       run: |
         gem install bundler -v 1.17.2
