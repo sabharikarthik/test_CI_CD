@@ -5,6 +5,7 @@ jobs:
     name: My Job
     runs-on: ubuntu-latest
     steps:
+    - uses: actions/checkout@master
     - name: Print a greeting
       run: |
         sudo apt-get install ruby-full
