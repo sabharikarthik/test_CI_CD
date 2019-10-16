@@ -28,7 +28,6 @@ jobs:
         bundle exec rspec
         rubocop --out result.txt
         echo "sabhari karthik"
-      working-directory: ./postgres
       env: 
         BUNDLE_GEMFILE: Gemfile
         POSTGRES_HOST: localhost
