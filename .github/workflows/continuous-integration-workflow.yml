@@ -4,8 +4,6 @@ jobs:
   build:
     name: My Job
     runs-on: ubuntu-latest
-    container:
-      image:  rubylang/ruby:2.6.3-bionic
     services:
       postgres:
         image: postgres:10.10
@@ -20,11 +18,11 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
     - uses: actions/checkout@master
+    - uses: actions/setup-ruby@v1
+      with:
+        ruby-version: 2.6.x
     - name: Print a greeting
       run: |
-        apt-get install wget ca-certificates
-        wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
-        apt-get update
         apt-get install libpq-dev
         gem install bundler -v 1.17.2
         bundle install
@@ -34,7 +32,7 @@ jobs:
         echo "sabhari karthik"
       env:
         RAILS_ENV: test
-        POSTGRES_HOST: postgres
+        POSTGRES_HOST: localhost
         POSTGRES_USER: sabhari
         POSTGRES_PASSWORD: Sabari123
         POSTGRES_DB: test_CI_CD_test
