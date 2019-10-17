@@ -31,7 +31,7 @@ jobs:
         rubocop --out result.txt
         echo "sabhari karthik"
       env:
-        RAILS_ENV: development
+        RAILS_ENV: test
         POSTGRES_HOST: localhost
         POSTGRES_USER: sabhari
         POSTGRES_PASSWORD: Sabari123
