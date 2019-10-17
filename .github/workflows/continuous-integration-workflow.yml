@@ -1,4 +1,4 @@
-name: Greeting from Sabhari
+name: Test CI CD
 on: 
   push:
     branches:
@@ -8,7 +8,7 @@ on:
       - master
 jobs:
   build:
-    name: My Job
+    name: Test Job
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
