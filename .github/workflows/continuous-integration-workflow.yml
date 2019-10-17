@@ -23,7 +23,7 @@ jobs:
     - name: Print a greeting
       run: |
         apt-get install wget ca-certificates
-        wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+        wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | apt-key add -
         apt-get update
         apt-get install libpq-dev
         gem install bundler -v 1.17.2
