@@ -4,6 +4,8 @@ jobs:
   build:
     name: My Job
     runs-on: ubuntu-latest
+    container:
+      image:  rubylang/ruby:2.6.3-bionic
     services:
       postgres:
         image: postgres:10.10
@@ -18,9 +20,6 @@ jobs:
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
     - uses: actions/checkout@master
-    - uses: actions/setup-ruby@v1
-      with:
-        ruby-version: 2.6.x
     - name: Print a greeting
       run: |
         sudo apt-get install libpq-dev
@@ -32,7 +31,7 @@ jobs:
         echo "sabhari karthik"
       env:
         RAILS_ENV: test
-        POSTGRES_HOST: localhost
+        POSTGRES_HOST: postgres
         POSTGRES_USER: sabhari
         POSTGRES_PASSWORD: Sabari123
         POSTGRES_DB: test_CI_CD_test
