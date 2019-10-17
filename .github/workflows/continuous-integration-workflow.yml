@@ -26,7 +26,7 @@ jobs:
         sudo apt-get install libpq-dev
         gem install bundler -v 1.17.2
         bundle install
-        rake db:migrate
+        rake db:create db:migrate
         bundle exec rspec
         rubocop --out result.txt
         echo "sabhari karthik"
