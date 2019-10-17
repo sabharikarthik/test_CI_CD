@@ -34,8 +34,7 @@ jobs:
         bundle install
         rake db:create db:migrate
         bundle exec rspec
-        rubocop --out result.txt
-        echo "sabhari karthik"
+        echo "success"
       env:
          RAILS_ENV: test
 #         POSTGRES_HOST: localhost
