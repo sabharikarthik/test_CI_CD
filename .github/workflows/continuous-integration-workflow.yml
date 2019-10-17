@@ -22,7 +22,7 @@ jobs:
     - uses: actions/checkout@master
     - name: Print a greeting
       run: |
-        sudo apt-get install libpq-dev
+        apt-get install libpq-dev
         gem install bundler -v 1.17.2
         bundle install
         rake db:create db:migrate
