@@ -4,18 +4,18 @@ jobs:
   build:
     name: My Job
     runs-on: ubuntu-latest
-    services:
-      postgres:
-        image: postgres:10.10
-        env:
-          POSTGRES_USER: sabhari
-          POSTGRES_PASSWORD: Sabari123
-          POSTGRES_DB: test_CI_CD_test
-        ports:
-        # will assign a random free host port
-        - 5432:5432
-        # needed because the postgres container does not provide a healthcheck
-        options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
+#     services:
+#       postgres:
+#         image: postgres:10.10
+#         env:
+#           POSTGRES_USER: sabhari
+#           POSTGRES_PASSWORD: Sabari123
+#           POSTGRES_DB: test_CI_CD_test
+#         ports:
+#         # will assign a random free host port
+#         - 5432:5432
+#         # needed because the postgres container does not provide a healthcheck
+#         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
     - uses: actions/checkout@master
     - uses: actions/setup-ruby@v1
@@ -23,7 +23,13 @@ jobs:
         ruby-version: 2.6.x
     - name: Print a greeting
       run: |
+        sudo apt-get install wget ca-certificates
+        wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
+        sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
+        sudo apt-get update
+        sudo apt-get install postgresql postgresql-contrib
         sudo apt-get install libpq-dev
+        sudo -u postgres bash -c "psql -c \"CREATE ROLE sabhari PASSWORD 'Sabari123' SUPERUSER;\""
         gem install bundler -v 1.17.2
         bundle install
         rake db:create db:migrate
@@ -31,15 +37,15 @@ jobs:
         rubocop --out result.txt
         echo "sabhari karthik"
       env:
-        RAILS_ENV: test
-        POSTGRES_HOST: localhost
-        POSTGRES_USER: sabhari
-        POSTGRES_PASSWORD: Sabari123
-        POSTGRES_DB: test_CI_CD_test
-        POSTGRES_PORT: 5432
-        BUNDLE_GEMFILE: Gemfile
-        PG_USER: sabhari
-        PG_HOST: localhost
-        PG_DATABASE: test_CI_CD_test
-        PG_PASSWORD: Sabari123
-        PG_PORT: ${{ job.services.postgres.ports['5432'] }}
+         RAILS_ENV: test
+#         POSTGRES_HOST: localhost
+#         POSTGRES_USER: sabhari
+#         POSTGRES_PASSWORD: Sabari123
+#         POSTGRES_DB: test_CI_CD_test
+#         POSTGRES_PORT: 5432
+#         BUNDLE_GEMFILE: Gemfile
+#         PG_USER: sabhari
+#         PG_HOST: localhost
+#         PG_DATABASE: test_CI_CD_test
+#         PG_PASSWORD: Sabari123
+#         PG_PORT: ${{ job.services.postgres.ports['5432'] }}
