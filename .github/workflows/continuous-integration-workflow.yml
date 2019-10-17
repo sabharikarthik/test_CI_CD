@@ -13,7 +13,7 @@ jobs:
           POSTGRES_DB: test_CI_CD_test
         ports:
         # will assign a random free host port
-        - 5432
+        - 5432:5432
         # needed because the postgres container does not provide a healthcheck
         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
@@ -38,3 +38,8 @@ jobs:
         POSTGRES_DB: test_CI_CD_test
         POSTGRES_PORT: 5432
         BUNDLE_GEMFILE: Gemfile
+        PG_USER: sabhari
+        PG_HOST: localhost
+        PG_DATABASE: test_CI_CD_test
+        PG_PASSWORD: Sabari123
+        PG_PORT: ${{ job.services.postgres.ports['5432'] }}
