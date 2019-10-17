@@ -10,7 +10,7 @@ jobs:
         env:
           POSTGRES_USER: sabhari
           POSTGRES_PASSWORD: Sabari123
-          POSTGRES_DB: test_CI_CD_development
+          POSTGRES_DB: test_CI_CD_test
         ports:
         # will assign a random free host port
         - 5432/tcp
@@ -35,6 +35,6 @@ jobs:
         POSTGRES_HOST: localhost
         POSTGRES_USER: sabhari
         POSTGRES_PASSWORD: Sabari123
-        POSTGRES_DB: test_CI_CD_development
+        POSTGRES_DB: test_CI_CD_test
         POSTGRES_PORT: ${{ job.services.postgres.ports[5432] }}
         BUNDLE_GEMFILE: Gemfile
