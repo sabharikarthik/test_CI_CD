@@ -4,18 +4,6 @@ jobs:
   build:
     name: My Job
     runs-on: ubuntu-latest
-#     services:
-#       postgres:
-#         image: postgres:10.10
-#         env:
-#           POSTGRES_USER: sabhari
-#           POSTGRES_PASSWORD: Sabari123
-#           POSTGRES_DB: test_CI_CD_test
-#         ports:
-#         # will assign a random free host port
-#         - 5432:5432
-#         # needed because the postgres container does not provide a healthcheck
-#         options: --health-cmd pg_isready --health-interval 10s --health-timeout 5s --health-retries 5
     steps:
     - uses: actions/checkout@master
     - uses: actions/setup-ruby@v1
@@ -40,15 +28,4 @@ jobs:
          DB_USERNAME: ${{ secrets.DB_USERNAME }}
          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
          DB_HOST: ${{ secrets.DB_HOST }} 
-         DB_PORT: ${{ secrets.DB_PORT }} 
-#         POSTGRES_HOST: localhost
-#         POSTGRES_USER: sabhari
-#         POSTGRES_PASSWORD: Sabari123
-#         POSTGRES_DB: test_CI_CD_test
-#         POSTGRES_PORT: 5432
-#         BUNDLE_GEMFILE: Gemfile
-#         PG_USER: sabhari
-#         PG_HOST: localhost
-#         PG_DATABASE: test_CI_CD_test
-#         PG_PASSWORD: Sabari123
-#         PG_PORT: ${{ job.services.postgres.ports['5432'] }}
+         DB_PORT: ${{ secrets.DB_PORT }}
