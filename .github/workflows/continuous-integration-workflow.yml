@@ -31,6 +31,7 @@ jobs:
       env:
          RAILS_ENV: test
     - name: Execute test cases and check the code coverage
+      run: |
         bundle exec rspec
         echo "success"
       env:
