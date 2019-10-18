@@ -18,9 +18,6 @@ jobs:
     - name: Install postgres
       run: |
         ./setup_postgres.sh -u ${{ secrets.DB_USERNAME }} -p ${{ secrets.DB_PASSWORD }}
-      env:
-        DB_USERNAME: ${{ secrets.DB_USERNAME }}
-        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
     - name: Install bundler
       run: |
         gem install bundler -v 1.17.2
