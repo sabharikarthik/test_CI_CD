@@ -30,6 +30,8 @@ jobs:
         rake db:create db:migrate
       env:
          RAILS_ENV: test
+         DB_USERNAME: ${{ secrets.DB_USERNAME }}
+         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
     - name: Execute test cases and check the code coverage
       run: |
         bundle exec rspec
