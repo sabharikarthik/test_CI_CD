@@ -15,15 +15,24 @@ jobs:
     - uses: actions/setup-ruby@v1
       with:
         ruby-version: 2.6.x
-    - name: Execute test cases and check the code coverage
+    - name: Install postgres
       run: |
-        ./setup_postgres.sh -u ${{ secrets.DB_USERNAME }} -pss ${{ secrets.DB_PASSWORD }}
+        ./setup_postgres.sh -u ${{ secrets.DB_USERNAME }} -p ${{ secrets.DB_PASSWORD }}
+      env:
+        DB_USERNAME: ${{ secrets.DB_USERNAME }}
+        DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+    - name: Install bundler
+      run: |
         gem install bundler -v 1.17.2
+    - name: Install gems and migrate the database
+      run: |
         bundle install
         rake db:create db:migrate
+      env:
+         RAILS_ENV: test
+    - name: Execute test cases and check the code coverage
         bundle exec rspec
         echo "success"
       env:
          RAILS_ENV: test
-         DB_USERNAME: ${{ secrets.DB_USERNAME }}
-         DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
+         
