@@ -17,13 +17,7 @@ jobs:
         ruby-version: 2.6.x
     - name: Execute test cases and check the code coverage
       run: |
-        sudo apt-get install wget ca-certificates
-        wget --quiet -O - https://www.postgresql.org/media/keys/ACCC4CF8.asc | sudo apt-key add -
-        sudo sh -c 'echo "deb http://apt.postgresql.org/pub/repos/apt/ `lsb_release -cs`-pgdg main" >> /etc/apt/sources.list.d/pgdg.list'
-        sudo apt-get update
-        sudo apt-get install postgresql postgresql-contrib
-        sudo apt-get install libpq-dev
-        sudo -u postgres bash -c "psql -c \"CREATE ROLE ${{ secrets.DB_USERNAME }} WITH PASSWORD '${{ secrets.DB_PASSWORD }}' LOGIN SUPERUSER;\""
+        ./setup_postgres.sh -u ${{ secrets.DB_USERNAME }} -pss ${{ secrets.DB_PASSWORD }}
         gem install bundler -v 1.17.2
         bundle install
         rake db:create db:migrate
@@ -33,5 +27,3 @@ jobs:
          RAILS_ENV: test
          DB_USERNAME: ${{ secrets.DB_USERNAME }}
          DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
-         DB_HOST: ${{ secrets.DB_HOST }} 
-         DB_PORT: ${{ secrets.DB_PORT }}
