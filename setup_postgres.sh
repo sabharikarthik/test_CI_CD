@@ -1,7 +1,7 @@
 DB_USERNAME=""
 DB_PASSWORD=""
 
-while getopts "u:p" opt; do
+while getopts ":u:p:" opt; do
   case ${opt} in
     u ) DB_USERNAME="$OPTARG";;
     p ) DB_PASSWORD="$OPTARG";;
